@@ -38,7 +38,7 @@ class _EditVehiculePageState extends State<EditVehiculePage> {
         return Colors.green;
       case 'en réparation':
         return Colors.orange;
-      case 'accidenté':
+      case 'accidentée':
         return Colors.red;
       case 'indisponible':
         return Colors.grey;

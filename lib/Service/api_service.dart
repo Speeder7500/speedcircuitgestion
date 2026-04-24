@@ -8,10 +8,10 @@ import '../Classes/reservation.dart';
 
 class ApiService {
   // Quand je suis au lycée
-  //final String baseUrl = 'http://172.16.195.254:5000';
+  final String baseUrl = 'http://172.16.195.254:5000';
 
   //Quand je suis chez moi
-  final String baseUrl = 'http://sio.fenelon-notredame.fr:19522';
+  //final String baseUrl = 'http://sio.fenelon-notredame.fr:19522';
 
   final _storage = FlutterSecureStorage();
 
