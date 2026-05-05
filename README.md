@@ -1,16 +1,7 @@
 # speedcircuitgestion
 
-A new Flutter project.
+Dans le cadre d’une application de gestion de circuits, je devais développer une application lourde permettant l’administration de ce site. En passant de la simple consultation des véhicules disponible à la location ainsi que les évènements prévus sur ce circuit à la modifications complète du contenu des réservations et des véhicules disponibles à la location. Mais l’application devait rester accessible uniquement au personnel du circuit
 
-## Getting Started
+Cette application à été developper en parallèle du site également disponible sur mon profil. 
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+C'est une application mobile développée en flutter avec le langage dart en utilisant la programation orientée objet
