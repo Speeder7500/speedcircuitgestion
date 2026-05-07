@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:speedcircuitgestion/main.dart';
 import '../Service/api_service.dart';
 import '../Service/auth_service.dart';
 import 'evenementScreen.dart';
 import 'vehiculeScreen.dart';
 import 'reservationScreen.dart';
-import '../Screens/compteScreen.dart';
+import 'compteScreen.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class Myapp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -52,12 +53,34 @@ class _Index extends State<Index> {
     }
   }
 
+  // Retourne la liste des labels accessibles selon le poste
+  List<String> _getAvailableScreens(idPoste) {
+    switch (idPoste) {
+      case "1": // Gestionnaire
+        return ['Evenements', 'Profil'];
+      case "2": // Mécanicien
+        return ['Gestion vehicules', 'Profil'];
+      case "3": // Technicien
+        return ['Reservations', 'Profil'];
+      case "4": // Admin - accès complet
+        return ['Evenements', 'Gestion vehicules', 'Reservations', 'Profil'];
+      default:
+        return ['Profil'];
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> menuItems = [
-      {'label': 'Evénements', 'icon': Icons.event, 'page': EvenementPage()},
+    final String? idPoste = info_user.isNotEmpty
+        ? info_user[0]['idPoste'].toString()
+        : null;
+
+    final List<String> pagesAutorisees = _getAvailableScreens(idPoste);
+
+    final List<Map<String, dynamic>> tousLesMenus = [
+      {'label': 'Evenements', 'icon': Icons.event, 'page': EvenementPage()},
       {
-        'label': 'Gestion véhicules',
+        'label': 'Gestion vehicules',
         'icon': Icons.directions_car,
         'page': VehiculesPage(),
       },
@@ -68,13 +91,17 @@ class _Index extends State<Index> {
       },
       {'label': 'Profil', 'icon': Icons.person, 'page': ComptePage()},
     ];
+
+    final List<Map<String, dynamic>> menuItems = tousLesMenus
+        .where((item) => pagesAutorisees.contains(item['label']))
+        .toList();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff1a0a7f),
         title: Row(
           children: [
             Text(
-              'Speed Circuit',
+              'SpeedCircuit',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,
@@ -104,11 +131,11 @@ class _Index extends State<Index> {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 2.4),
                       child: Text(
-                        'Bienvenue, ${info_user[0]['Prenom']} ${info_user[0]['Nom']}!',
+                        'Bienvenue, ${info_user[0]['Prenom']} ${info_user[0]['Nom']}',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xff1a0a7f),
+                          color: Color(0xf1a0a7f),
                         ),
                       ),
                     ),
