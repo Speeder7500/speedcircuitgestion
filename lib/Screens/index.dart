@@ -56,13 +56,13 @@ class _Index extends State<Index> {
   // Retourne la liste des labels accessibles selon le poste
   List<String> _getAvailableScreens(idPoste) {
     switch (idPoste) {
-      case "1": // Gestionnaire
+      case 1: // Gestionnaire
         return ['Evenements', 'Profil'];
-      case "2": // Mécanicien
+      case 2: // Mécanicien
         return ['Gestion vehicules', 'Profil'];
-      case "3": // Technicien
+      case 3: // Technicien
         return ['Reservations', 'Profil'];
-      case "4": // Admin - accès complet
+      case 4: // Admin - accès complet
         return ['Evenements', 'Gestion vehicules', 'Reservations', 'Profil'];
       default:
         return ['Profil'];
@@ -71,10 +71,7 @@ class _Index extends State<Index> {
 
   @override
   Widget build(BuildContext context) {
-    final String? idPoste = info_user.isNotEmpty
-        ? info_user[0]['idPoste'].toString()
-        : null;
-
+    final idPoste = int.tryParse(info_user[0]['IdPoste'].toString());
     final List<String> pagesAutorisees = _getAvailableScreens(idPoste);
 
     final List<Map<String, dynamic>> tousLesMenus = [
@@ -135,7 +132,7 @@ class _Index extends State<Index> {
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xf1a0a7f),
+                          color: Color(0xff1a0a7f),
                         ),
                       ),
                     ),
