@@ -17,7 +17,7 @@ class _EditVehiculePageState extends State<EditVehiculePage> {
   final List<Map<String, dynamic>> _etats = [
     {'id': 1, 'libelle': 'Disponible'},
     {'id': 2, 'libelle': 'En réparation'},
-    {'id': 3, 'libelle': 'Accidenté'},
+    {'id': 3, 'libelle': 'Accidentée'},
     {'id': 4, 'libelle': 'Indisponible'},
   ];
 
