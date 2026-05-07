@@ -167,7 +167,7 @@ class _VehiculesPagesState extends State<VehiculesPage> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.asset(
-                  "../assets/Vehicule/${vehicule.id}.png",
+                  "assets/Vehicule/${vehicule.id}.png",
                   fit: BoxFit.contain,
                   errorBuilder: (context, error, stackTrace) => Icon(
                     Icons.directions_car_rounded,
