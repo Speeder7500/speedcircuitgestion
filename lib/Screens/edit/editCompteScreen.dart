@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:speedcircuitgestion/Service/auth_service.dart';
-import '../Service/api_service.dart';
-import '../Classes/compte.dart';
+import '../../Service/api_service.dart';
+import '../../Classes/compte.dart';
 
 class EditComptePage extends StatefulWidget {
   final Compte compte;

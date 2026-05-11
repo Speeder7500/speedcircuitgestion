@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../Classes/vehicule.dart';
-import '../Service/api_service.dart';
+import '../../Classes/vehicule.dart';
+import '../../Service/api_service.dart';
 
 class EditVehiculePage extends StatefulWidget {
   final Vehicule vehicule;

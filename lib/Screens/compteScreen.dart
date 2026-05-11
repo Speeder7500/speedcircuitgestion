@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../Service/api_service.dart';
 import '../Service/auth_service.dart';
 import '../Classes/compte.dart';
-import 'editCompteScreen.dart';
+import 'edit/editCompteScreen.dart';
 
 class ComptePage extends StatefulWidget {
   const ComptePage({Key? key}) : super(key: key);

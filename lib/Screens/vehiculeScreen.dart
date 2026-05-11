@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../Service/api_service.dart';
 import '../Service/auth_service.dart';
 import '../Classes/vehicule.dart';
-import 'editVehiculeScreen.dart';
+import 'edit/editVehiculeScreen.dart';
 
 class VehiculesPage extends StatefulWidget {
   const VehiculesPage({Key? key}) : super(key: key);
