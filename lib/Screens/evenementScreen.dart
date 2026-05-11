@@ -51,8 +51,17 @@ class _EvenementPageState extends State<EvenementPage> {
                 fontStyle: FontStyle.italic,
               ),
             ),
-            SizedBox(width: 40),
-            Text('Evenements', style: TextStyle(color: Colors.white)),
+            SizedBox(width: 12),
+            Container(width: 1, height: 20, color: Colors.white30),
+            SizedBox(width: 12),
+            Text(
+              'Evenements',
+              style: TextStyle(
+                color: Colors.white70,
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
           ],
         ),
         actions: [

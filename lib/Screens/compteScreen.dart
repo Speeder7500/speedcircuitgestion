@@ -57,7 +57,7 @@ class _ComptePageState extends State<ComptePage> {
       appBar: AppBar(
         backgroundColor: const Color(0xff1a0a7f),
         title: Row(
-          children: const [
+          children: [
             Text(
               'SpeedCircuit',
               style: TextStyle(
@@ -66,8 +66,17 @@ class _ComptePageState extends State<ComptePage> {
                 fontStyle: FontStyle.italic,
               ),
             ),
-            SizedBox(width: 40),
-            Text('Mon compte', style: TextStyle(color: Colors.white)),
+            SizedBox(width: 12),
+            Container(width: 1, height: 20, color: Colors.white30),
+            SizedBox(width: 12),
+            Text(
+              'Mon compte',
+              style: TextStyle(
+                color: Colors.white70,
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
           ],
         ),
         actions: [
