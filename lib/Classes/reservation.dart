@@ -1,6 +1,8 @@
+import 'package:intl/intl.dart';
+
 class Reservation {
   final int numSession;
-  final DateTime date;
+  final String date;
   final String heure;
   final String vehicule;
   final String nom;
@@ -16,22 +18,20 @@ class Reservation {
   });
 
   factory Reservation.fromJson(Map<String, dynamic> json) {
-    final rawDate = json['DateSession'].toString().split('T')[0];
+    /*final rawDate = json['DateReservation'].toString().split('T')[0];
     final parts = rawDate.split('-');
-    final date = DateTime(
-      int.parse(parts[0]),
-      int.parse(parts[1]),
-      int.parse(parts[2]),
-    );
-
-    final rawHeure = json['HeureReservation'].toString();
-    final heureParts = rawHeure.split(':');
-    final heure = '${heureParts[0]}:${heureParts[1]}';
+    final date = DateFormat('dd/MM/yyyy').format(
+      DateTime.utc(
+        int.parse(parts[0]),
+        int.parse(parts[1]),
+        int.parse(parts[2]),
+      ),
+    );*/
 
     return Reservation(
-      numSession: json['NumSession'],
-      date: date,
-      heure: heure,
+      numSession: json['IdSession'],
+      date: json['DateReservation'],
+      heure: json['HeureReservation'],
       vehicule: '${json['Marque']} ${json['Modele']}',
       nom: json['Nom'],
       prenom: json['Prenom'],
@@ -41,7 +41,7 @@ class Reservation {
   Map<String, dynamic> toJson() {
     return {
       'IdSession': numSession,
-      'DateSession': date.toIso8601String(),
+      'DateReservation': date,
       'HeureReservation': heure,
       'Vehicule': vehicule,
       'Nom': nom,

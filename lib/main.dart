@@ -111,7 +111,7 @@ class _AuthScreenState extends State<AuthScreen> {
     try {
       final result = await ApiService().login(identifiant, password);
 
-      if (result != null && !result.containsKey('error')) {
+      if (!result.containsKey('error')) {
         final String idEntite = result['user']['IdEntite'].toString();
 
         await AuthService().saveUserId(idEntite);

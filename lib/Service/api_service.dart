@@ -134,9 +134,6 @@ class ApiService {
 
       if (response.statusCode == 200) {
         final List<dynamic> data = jsonDecode(response.body);
-        print(
-          'Toutes les dates : ${data.map((j) => j['DateSession']).toList()}',
-        );
         return data.map((json) => Reservation.fromJson(json)).toList();
       } else {
         throw Exception('Erreur ${response.statusCode}');
