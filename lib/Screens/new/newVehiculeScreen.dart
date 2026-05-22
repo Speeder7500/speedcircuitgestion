@@ -27,12 +27,13 @@ class _NewVehiculePageState extends State<NewVehiculeScreen> {
   static const Color _primary = Color(0xff1a0a7f);
   static const Color _background = Color(0xfff4f6fb);
 
-  static const List<String> _motricites = ['2WD', '4WD', 'AWD', 'FWD', 'RWD'];
+  static const List<String> _motricites = ['4', '2', '1'];
 
   static const List<Map<String, dynamic>> _etats = [
     {'id': 1, 'libelle': 'Disponible'},
     {'id': 2, 'libelle': 'En réparation'},
-    {'id': 3, 'libelle': 'Indisponible'},
+    {'id': 3, 'libelle': 'Accidentée'},
+    {'id': 4, 'libelle': 'Indisponible'},
   ];
 
   @override
@@ -51,13 +52,13 @@ class _NewVehiculePageState extends State<NewVehiculeScreen> {
     setState(() => _isLoading = true);
 
     try {
-      final nouveauVehicule = await _apiService.addVehicule(
+      await _apiService.addVehicule(
         marque: _marqueController.text.trim(),
         modele: _modeleController.text.trim(),
         puissance: int.parse(_puissanceController.text.trim()),
         poid: int.parse(_poidController.text.trim()),
         motricite: _motriciteSelectionnee!,
-        prix: double.parse(_prixController.text.trim().replaceAll(',', '.')),
+        prix: int.parse(_prixController.text.trim()),
         idEtat: _idEtat,
       );
 
@@ -68,7 +69,7 @@ class _NewVehiculePageState extends State<NewVehiculeScreen> {
           backgroundColor: Colors.green,
         ),
       );
-      Navigator.pop(context, nouveauVehicule);
+      //Navigator.pop(context, nouveauVehicule);
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -96,7 +97,7 @@ class _NewVehiculePageState extends State<NewVehiculeScreen> {
         title: Row(
           children: [
             const Text(
-              'SpeedCircuit',
+              'SpeedCircuit Admin',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 22,

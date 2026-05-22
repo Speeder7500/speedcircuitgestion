@@ -62,7 +62,7 @@ class ApiService {
     }
   }
 
-  Future<Vehicule> addVehicule({
+  Future<void> addVehicule({
     required String marque,
     required String modele,
     required int puissance,
@@ -75,19 +75,17 @@ class ApiService {
       Uri.parse('$baseUrl/vehicule/add'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
-        'Marque': marque,
-        'Modele': modele,
-        'Puissance': puissance,
-        'Poid': poid,
-        'Prix': prix,
-        'IdEtat': idEtat,
+        'marque': marque,
+        'modele': modele,
+        'puissance': puissance,
+        'motricite': motricite,
+        'poid': poid,
+        'prix': prix,
+        'idEtat': idEtat,
       }),
     );
 
-    if (response.statusCode == 201) {
-      final body = jsonDecode(response.body);
-      return Vehicule.fromJson(body);
-    } else {
+    if (response.statusCode != 200) {
       final body = jsonDecode(response.body);
       throw Exception(body['message'] ?? 'Erreur lors de l\'ajout du véhicule');
     }
