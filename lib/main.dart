@@ -64,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'SpeedCircuit',
+              'SpeedCircuit Admin',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 32,
@@ -160,7 +160,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  'SpeedCircuit',
+                  'SpeedCircuit Admin',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 30,

@@ -84,7 +84,7 @@ class _EditVehiculePageState extends State<EditVehiculePage> {
         title: Row(
           children: [
             Text(
-              'SpeedCircuit',
+              'SpeedCircuit Admin',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 22,

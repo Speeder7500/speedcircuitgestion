@@ -59,7 +59,7 @@ class _ComptePageState extends State<ComptePage> {
         title: Row(
           children: [
             Text(
-              'SpeedCircuit',
+              'SpeedCircuit Admin',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,

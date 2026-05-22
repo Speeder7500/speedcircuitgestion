@@ -3,6 +3,7 @@ import '../Service/api_service.dart';
 import '../Service/auth_service.dart';
 import '../Classes/vehicule.dart';
 import 'edit/editVehiculeScreen.dart';
+import 'new/newVehiculeScreen.dart';
 
 class VehiculesPage extends StatefulWidget {
   const VehiculesPage({Key? key}) : super(key: key);
@@ -62,7 +63,7 @@ class _VehiculesPagesState extends State<VehiculesPage> {
         title: Row(
           children: [
             Text(
-              'SpeedCircuit',
+              'SpeedCircuit Admin',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 22,
@@ -90,6 +91,24 @@ class _VehiculesPagesState extends State<VehiculesPage> {
             tooltip: 'Se déconnecter',
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () async {
+          final added = await Navigator.push<Vehicule>(
+            context,
+            MaterialPageRoute(builder: (_) => const NewVehiculeScreen()),
+          );
+          if (added != null) {
+            setState(() => vehicules.add(added));
+          }
+        },
+        backgroundColor: _primary,
+        foregroundColor: Colors.white,
+        icon: const Icon(Icons.add_rounded),
+        label: const Text(
+          'Ajouter un nouveau véhciule',
+          style: TextStyle(fontWeight: FontWeight.w600),
+        ),
       ),
       body: _isLoading
           ? Center(child: CircularProgressIndicator(color: _primary))

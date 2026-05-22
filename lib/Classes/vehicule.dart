@@ -2,6 +2,10 @@ class Vehicule {
   final int id;
   final String marque;
   final String modele;
+  final int puissance;
+  final int poid;
+  final String motricite;
+  final int prix;
   final int idEtat;
   final String libelleEtat;
 
@@ -9,6 +13,10 @@ class Vehicule {
     required this.id,
     required this.marque,
     required this.modele,
+    required this.puissance,
+    required this.poid,
+    required this.motricite,
+    required this.prix,
     required this.idEtat,
     required this.libelleEtat,
   });
@@ -18,20 +26,46 @@ class Vehicule {
       id: json['IdVehicule'],
       marque: json['Marque'],
       modele: json['Modele'],
+      puissance: json['Puissance'],
+      poid: json['Poid'],
+      motricite: json['Motricite'],
+      prix: json['Prix'],
       idEtat: json['IdEtat'],
       libelleEtat: json['libelleEtat'],
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {'IdVehicule': id, 'Marque': marque, 'Modele': modele};
+    return {
+      'IdVehicule': id,
+      'Marque': marque,
+      'Modele': modele,
+      'Puissance': puissance,
+      'Poid': poid,
+      'Motricite': motricite,
+      'Prix': prix,
+      'IdEtat': idEtat,
+    };
   }
 
-  Vehicule copyWith({int? idEtat, String? libelleEtat}) {
+  Vehicule copyWith({
+    int? idEtat,
+    String? libelleEtat,
+    String? marque,
+    String? modele,
+    int? puissance,
+    int? poid,
+    String? motricite,
+    int? prix,
+  }) {
     return Vehicule(
       id: id,
-      marque: marque,
-      modele: modele,
+      marque: marque ?? this.marque,
+      modele: modele ?? this.modele,
+      puissance: puissance ?? this.puissance,
+      poid: poid ?? this.poid,
+      motricite: motricite ?? this.motricite,
+      prix: prix ?? this.prix,
       idEtat: idEtat ?? this.idEtat,
       libelleEtat: libelleEtat ?? this.libelleEtat,
     );

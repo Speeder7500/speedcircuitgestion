@@ -62,6 +62,37 @@ class ApiService {
     }
   }
 
+  Future<Vehicule> addVehicule({
+    required String marque,
+    required String modele,
+    required int puissance,
+    required int poid,
+    required String motricite,
+    required int prix,
+    required int idEtat,
+  }) async {
+    final response = await http.post(
+      Uri.parse('$baseUrl/vehicule/add'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'Marque': marque,
+        'Modele': modele,
+        'Puissance': puissance,
+        'Poid': poid,
+        'Prix': prix,
+        'IdEtat': idEtat,
+      }),
+    );
+
+    if (response.statusCode == 201) {
+      final body = jsonDecode(response.body);
+      return Vehicule.fromJson(body);
+    } else {
+      final body = jsonDecode(response.body);
+      throw Exception(body['message'] ?? 'Erreur lors de l\'ajout du véhicule');
+    }
+  }
+
   Future<List<dynamic>> getCompte() async {
     final String? userId = await _storage.read(key: 'x-user-id');
 
