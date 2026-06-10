@@ -8,10 +8,10 @@ import '../Classes/reservation.dart';
 
 class ApiService {
   // Quand je suis au lycée
-  final String baseUrl = 'http://172.16.195.254:5000';
+  //final String baseUrl = 'http://172.16.195.254:5000';
 
   //Quand je suis chez moi
-  //final String baseUrl = 'http://sio.fenelon-notredame.fr:19522';
+  final String baseUrl = 'http://sio.fenelon-notredame.fr:19522';
 
   final _storage = FlutterSecureStorage();
 
@@ -62,7 +62,7 @@ class ApiService {
     }
   }
 
-  Future<void> addVehicule({
+  Future<Vehicule> addVehicule({
     required String marque,
     required String modele,
     required int puissance,
@@ -85,7 +85,11 @@ class ApiService {
       }),
     );
 
-    if (response.statusCode != 200) {
+    if (response.statusCode == 201) {
+      final json = jsonDecode(response.body);
+      json['Motricite'] = json['Motricite'].toString();
+      return Vehicule.fromJson(json);
+    } else {
       final body = jsonDecode(response.body);
       throw Exception(body['message'] ?? 'Erreur lors de l\'ajout du véhicule');
     }

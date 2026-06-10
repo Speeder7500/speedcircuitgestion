@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../Service/api_service.dart';
 import '../../Classes/vehicule.dart';
+import '../vehiculeScreen.dart';
 
 class NewVehiculeScreen extends StatefulWidget {
   const NewVehiculeScreen({Key? key}) : super(key: key);
@@ -52,7 +53,7 @@ class _NewVehiculePageState extends State<NewVehiculeScreen> {
     setState(() => _isLoading = true);
 
     try {
-      await _apiService.addVehicule(
+      final nouveauVehicule = await _apiService.addVehicule(
         marque: _marqueController.text.trim(),
         modele: _modeleController.text.trim(),
         puissance: int.parse(_puissanceController.text.trim()),
@@ -69,7 +70,7 @@ class _NewVehiculePageState extends State<NewVehiculeScreen> {
           backgroundColor: Colors.green,
         ),
       );
-      //Navigator.pop(context, nouveauVehicule);
+      Navigator.pop(context, nouveauVehicule);
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
